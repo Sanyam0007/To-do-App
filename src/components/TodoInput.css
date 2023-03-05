@@ -1,0 +1,23 @@
+body{
+    background-color: rgb(11, 15, 34);
+    align-items: center;
+    display: flex;
+}
+
+.add-button{
+    border-radius: 65%;
+    background-color:blue;
+}
+.input{
+    width: 300px;
+    height: 35px;
+    border-radius: 15px;
+}
+.add-button{
+    margin-left: 10px;
+    width: 50px;
+    height: 50px;
+    color: white;
+    font-size: 20px;
+    
+}

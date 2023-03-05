@@ -1,23 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import TodoInput from "./components/TodoInput";
+import TodoList from "./components/TodoList";
+// import Typography from '@mui/material/Typography';
+
 
 function App() {
+  const [listTodo, setListTodo] = useState([]);
+  console.log("listTodo", listTodo);
+
+  const addList = (inputText) => {
+    console.log("inputText", inputText);
+    setListTodo([...listTodo, inputText]);
+  };
+
+  const deleteListItem = (key) => {
+    const tempList = [...listTodo];
+    tempList.splice(key, 1);
+    setListTodo([...tempList]);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <div className="inner-container">
+        <TodoInput sendList={addList} />
+        <h1 style={{ color: "white" }}>My Todo's</h1>
+      </div>
+      {listTodo.map((listItem, index) => {
+        return (
+          <TodoList
+            deleteListItem={deleteListItem}
+            deleteKey={index}
+            listItem={listItem}
+            listIndex={index}
+          />
+        );
+      })}
     </div>
   );
 }
